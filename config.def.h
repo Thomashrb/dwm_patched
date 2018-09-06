@@ -5,6 +5,7 @@
 static const char *fonts[] = {
 	"monospace:size=10"
 };
+static const char stfont[]          = "Inconsolata Nerd Font:size=10";
 static const char dmenufont[]       = "monospace:size=10";
 static const char normbordercolor[] = "#444444";
 static const char normbgcolor[]     = "#222222";
@@ -27,7 +28,6 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
       { "Gimp",     NULL,       NULL,       0,            1,           -1 },
-  //	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
 };
 
 /* layout(s) */
@@ -37,10 +37,11 @@ static const int resizehints = 0;    /* 1 means respect size hints in tiled resi
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-  { "###",      gaplessgrid }, //default
+
+        { "###",      gaplessgrid }, //default
 	{ "[]=",      tile },
 	{ "[M]",      monocle },
-  { "><>",      NULL },    /* no layout function means floating behavior */
+        { "><>",      NULL },    /* no layout function means floating behavior */
 };
 
 /* key definitions */
@@ -57,7 +58,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
-static const char *termcmd[]  = { "st", NULL };
+static const char *termcmd[]  = { "st", "-f", stfont, NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
