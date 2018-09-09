@@ -5,7 +5,7 @@
 static const char *fonts[] = {
 	"monospace:size=10"
 };
-static const char stfont[]          = "Inconsolata Nerd Font:size=10";
+static const char stfont[]          = "Inconsolata Nerd Font:size=11";
 static const char dmenufont[]       = "monospace:size=10";
 static const char normbordercolor[] = "#444444";
 static const char normbgcolor[]     = "#222222";
@@ -17,6 +17,9 @@ static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
+static const char scratchpadname[] = "scratchpad";
+static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
+
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
@@ -37,10 +40,9 @@ static const int resizehints = 0;    /* 1 means respect size hints in tiled resi
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-
         { "###",      gaplessgrid }, //default
-	{ "[]=",      tile },
-	{ "[M]",      monocle },
+       	{ "[]=",      tile },
+        { "[M]",      monocle },
         { "><>",      NULL },    /* no layout function means floating behavior */
 };
 
@@ -62,6 +64,7 @@ static const char *termcmd[]  = { "st", "-f", stfont, NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
+  { MODKEY,                       XK_bar,    togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
