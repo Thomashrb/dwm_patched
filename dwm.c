@@ -267,11 +267,10 @@ static Display *dpy;
 static Drw *drw;
 static Monitor *mons, *selmon;
 static Window root;
-static unsigned int scratchtag = 1 << LENGTH(tags);
-
 /* configuration, allows nested code to access above variables */
 #include "config.h"
 
+static unsigned int scratchtag = 1 << LENGTH(tags);
 /* compile-time check if all tags fit into an unsigned int bit array. */
 struct NumTags { char limitexceeded[LENGTH(tags) > 31 ? -1 : 1]; };
 
